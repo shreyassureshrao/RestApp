@@ -1,0 +1,18 @@
+Run the Uvicorn server in command prompt and see the application output
+> Open Command Prompt
+> Run pip install -r requirements.txt 
+> Go the 'app' folder where main.py resides in your local folder
+> uvicorn main:app --reload    [It runs the uvicorn server at port 8000]
+> In browser type http://localhost:8000/docs (FastAPI Swagger)
+
+
+Steps to build and run the Docker Image - into a container
+a. Start 'Docker Desktop' 
+b. In the terminal, execute the following lines
+> docker build -t restappimage .
+> docker run -d --name restappcontainer -p 80:80 restappimage  // 'd' means detached mode
+c. Test the Container running on port 80
+http://localhost
+or 
+http://localhost/users/1
+d. Verify the container in 'Docker Desktop' - "restappcontainer" should be running
