@@ -57,7 +57,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          
+
       - name: Start UVicorn server
         run: |
           uvicorn app.main:app --host 0.0.0.0 --port 8000 & sleep 5  # Give some time for UVicorn to start
@@ -76,7 +76,7 @@ jobs:
     needs: test
 
     env:
-      DOCKER_IMAGE_NAME: your-docker-image-name
+      DOCKER_IMAGE_NAME: restappimage
 
     steps:
       - name: Checkout repository
