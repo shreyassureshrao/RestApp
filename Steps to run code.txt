@@ -10,9 +10,9 @@ Steps to build and run the Docker Image - into a container
 a. Start 'Docker Desktop' 
 b. In the terminal, execute the following lines
 > docker build -t restappimage .
-> docker run -d --name restappcontainer -p 80:80 restappimage  // 'd' means detached mode
-c. Test the Container running on port 80
-http://localhost
+> docker run -d --name restappcontainer -p 8000:8000 restappimage  // 'd' means detached mode
+c. Verify the container in 'Docker Desktop' - "restappcontainer" should be running
+d. Test the Container running on port 8000
+http://localhost:8000
 or 
-http://localhost/users/1
-d. Verify the container in 'Docker Desktop' - "restappcontainer" should be running
+http://localhost:8000/docs to view the Swagger

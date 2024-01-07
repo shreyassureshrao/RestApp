@@ -22,4 +22,4 @@ COPY ./app /code/app
 # Set the command to run the uvicorn server.
 #This command will be run from the current working directory, the same /code directory you set above with WORKDIR /code.
 #Because the program will be started at /code and inside of it is the directory ./app with your code, Uvicorn will be able to see and import app from app.main.
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
