@@ -1,13 +1,14 @@
 # This workflow will install Python dependencies, run tests, and lint with a single version of Python
+# It also includes a deploy job to build and push a Docker image
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -50,12 +51,6 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.9"
-      
-      - name: Install dependencies for testing
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Start UVicorn server
         run: |
@@ -69,27 +64,27 @@ jobs:
         run: |
           kill $(pgrep -f "uvicorn app.main:app")
 
-    deploy:
-      runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-      needs: test
+    needs: test
 
-      env:
-        DOCKER_IMAGE_NAME: restappimage
+    env:
+      DOCKER_IMAGE_NAME: your-docker-image-name
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-        - name: Set up Docker Buildx
-          uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-        - name: Build and push Docker image
-          run: |
-            docker buildx create --use
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest .
-            docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
-          env:
-            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push Docker image
+        run: |
+          docker buildx create --use
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest .
+          docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
