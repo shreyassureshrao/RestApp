@@ -87,11 +87,13 @@ jobs:
 
       - name: Print DOCKER_USERNAME and DOCKER_IMAGE_NAME
         run: |
+          echo "first step"
           echo "DOCKER_USERNAME: $DOCKER_USERNAME"
           echo "DOCKER_IMAGE_NAME: $DOCKER_IMAGE_NAME"
 
       - name: Build and push Docker image
         run: |
+          echo "second step"
           docker buildx create --use
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest --push .
