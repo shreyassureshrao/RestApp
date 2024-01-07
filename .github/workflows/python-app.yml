@@ -77,6 +77,8 @@ jobs:
 
     env:
       DOCKER_IMAGE_NAME: restappimage
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     steps:
       - name: Checkout repository
@@ -98,6 +100,4 @@ jobs:
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest --push .
           docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+         
