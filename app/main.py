@@ -67,7 +67,7 @@ def delete_user(u_id: int):
         else:
             raise HTTPException(status_code=404, detail=f"There is no User with id as {u_id}")
     except:
-        print('Exception occurred in delete')
+        print('Exception occurred')
 
 @app.put('/users', status_code=204)
 def change_user(userObj: User):
