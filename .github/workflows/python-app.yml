@@ -68,5 +68,6 @@ jobs:
 
       - name: Stop UVicorn server
         run: |
-          kill $(pgrep -f "uvicorn app.main:app")
+          kill $(pgrep -f "uvicorn app.main:app") 
+          kill x
          
