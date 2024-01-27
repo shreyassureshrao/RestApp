@@ -64,7 +64,7 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest app/test_main.py
+          pytest app/test_main1.py
 
       - name: Stop UVicorn server
         run: |
