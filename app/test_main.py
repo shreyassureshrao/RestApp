@@ -21,7 +21,7 @@ try:
         assert response.status_code == 200
         assert response.json() == {
         "id": 1,
-        "address":"bangalore",
+        "address":"mysore",
         "email": "shreyassureshrao@gmail.com",
         "mobile":9591782068,
         "name":"Shreyas Rao"
