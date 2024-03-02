@@ -62,8 +62,7 @@ jobs:
           uvicorn app.main:app --host 0.0.0.0 --port 8000 & sleep 5  # Give some time for UVicorn to start
 
       - name: Run tests with pytest
-        run: |
-          pytest app/test_main.py
+        run:  pytest app/test_main.py
 
       - name: Stop UVicorn server
         run: |
