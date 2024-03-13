@@ -87,4 +87,4 @@ def change_user(userObj: User):
             json.dump(user,f)
         return new_user
     else:
-        return HTTPException(status_code=404, detail=f"User with id {userObj.id} does not exist")
+        return HTTPException(status_code=404, detail=f"User with userid {userObj.id} does not exist")
