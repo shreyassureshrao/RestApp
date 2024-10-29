@@ -5,7 +5,6 @@ Run the Uvicorn server in command prompt and see the application output
 > uvicorn main:app --reload    [It runs the uvicorn server at port 8000]
 > In browser type http://localhost:8000/docs (FastAPI Swagger)
 
-
 Steps to build and run the Docker Image - into a container
 a. Start 'Docker Desktop' 
 b. In the terminal, execute the following lines
