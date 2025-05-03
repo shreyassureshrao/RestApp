@@ -1,3 +1,4 @@
+Part-I: Local execution
 Run the Uvicorn server in command prompt and see the application output
 > Open Command Prompt
 > Run "pip install -r requirements.txt" command 
@@ -5,6 +6,7 @@ Run the Uvicorn server in command prompt and see the application output
 > uvicorn main:app --reload    [It runs the uvicorn server at port 8000]
 > In browser type http://localhost:8000/docs (FastAPI Swagger)
 
+Part-II: Local execution
 Steps to build and run the Docker Image - into a container
 a. Start 'Docker Desktop' 
 b. In the terminal, execute the following lines
@@ -15,3 +17,7 @@ d. Test the Container running on port 8000
 http://localhost:8000
 or 
 http://localhost:8000/docs to view the Swagger
+
+Part-III: Automation of workflow using GitHub Actions CI tool
+Make any changes to the source code and commit the changes. 
+This automatically runs the workflow on GitHub Actions CI server and invokes the Build, Test & Deploy jobs
