@@ -6,7 +6,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
-import json
+import json 
 
 app = FastAPI()
 
@@ -65,7 +65,7 @@ def delete_user(u_id: int):
             with open(filename,'w') as f:
                 json.dump(user,f)
         else:
-            raise HTTPException(status_code=404, detail=f"There is no ID with id as {u_id}")
+            raise HTTPException(status_code=404, detail=f"There is no User ID with id as {u_id}")
     except:
         print('Exception occurred')
 
