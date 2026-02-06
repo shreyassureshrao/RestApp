@@ -27,7 +27,7 @@ with open(filename,'r') as f:
     user = json.load(f)['user']
     
 
-@app.get('/')
+@app.get('/users/')
 def getAllUsers():
     return user
 
@@ -65,7 +65,7 @@ def delete_user(u_id: int):
             with open(filename,'w') as f:
                 json.dump(user,f)
         else:
-            raise HTTPException(status_code=404, detail=f"There is no User ID with id as {u_id}")
+            raise HTTPException(status_code=404, detail=f"There is no ID with id as {u_id}")
     except:
         print('Exception occurred')
 

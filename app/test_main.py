@@ -13,7 +13,7 @@ client = TestClient(app)
 
 try:
     def test_read_main():
-        response = client.get("/")
+        response = client.get("/users/")
         assert response.status_code == 200
 
     def test_read_item():
